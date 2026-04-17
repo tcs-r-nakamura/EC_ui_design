@@ -62,8 +62,11 @@
       border: none;
       padding: 16px 22px;
       font-size: 16px;
-      outline: none;
       font-family: inherit;
+    }
+    .search-box input:focus {
+      outline: 2px solid #4da6e8;
+      outline-offset: -2px;
     }
     .search-box button {
       background: #f4841a;
@@ -232,7 +235,7 @@
     /* ===== Footer ===== */
     footer {
       background: #1a3a5c;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.85);
       text-align: center;
       padding: 24px;
       font-size: 14px;
@@ -265,27 +268,28 @@
   <h1>何をお探しですか？</h1>
   <p>機能説明・操作手順をまとめています</p>
   <div class="search-box">
-    <input type="text" placeholder="例：注文方法、請求書のダウンロード、ユーザー追加…">
-    <button>検索</button>
+    <input type="text" placeholder="例：注文方法、請求書のダウンロード、ユーザー追加…" aria-label="キーワードで検索">
+    <button type="button">検索</button>
   </div>
 </section>
 
+<main>
 <!-- ===== Role Section ===== -->
 <section class="role-section">
-  <p class="role-section-title">あなたの役割を選んでください</p>
+  <h2 class="role-section-title">あなたの役割を選んでください</h2>
   <p class="role-section-sub">役割に合わせた手順・機能説明をご案内します</p>
 
   <!-- Role Cards -->
   <div class="role-cards">
-    <div class="role-card role-card-buyer active" onclick="switchRole('buyer')">
+    <div class="role-card role-card-buyer active" onclick="switchRole('buyer')" role="button" tabindex="0">
       <div class="role-card-name">購買担当者</div>
       <div class="role-card-desc">商品の検索・注文・<br>発注・納品確認</div>
     </div>
-    <div class="role-card role-card-finance" onclick="switchRole('finance')">
+    <div class="role-card role-card-finance" onclick="switchRole('finance')" role="button" tabindex="0">
       <div class="role-card-name">経理担当者</div>
       <div class="role-card-desc">請求書・支払い・<br>CSV出力・レポート</div>
     </div>
-    <div class="role-card role-card-admin" onclick="switchRole('admin')">
+    <div class="role-card role-card-admin" onclick="switchRole('admin')" role="button" tabindex="0">
       <div class="role-card-name">管理者</div>
       <div class="role-card-desc">ユーザー管理・承認設定・<br>システム連携</div>
     </div>
@@ -295,11 +299,11 @@
   <div class="role-panel active" id="panel-buyer">
     <div class="panel-box">
       <div class="panel-box-header">
-        <div class="panel-box-title">購買担当者向けガイド</div>
+        <h3 class="panel-box-title">購買担当者向けガイド</h3>
         <a href="order_detail.html" class="panel-all-link">すべてのカテゴリを見る ›</a>
       </div>
       <ul class="task-list">
-        <li class="task-item" onclick="location.href='order_detail.html'">
+        <li class="task-item" onclick="location.href='order_detail.html'" tabindex="0">
           <div class="task-item-num">1</div>
           <div class="task-item-body">
             <div class="task-item-title">商品を検索・比較する</div>
@@ -307,7 +311,7 @@
           </div>
           <div class="task-item-arrow">›</div>
         </li>
-        <li class="task-item" onclick="location.href='order_detail.html'">
+        <li class="task-item" onclick="location.href='order_detail.html'" tabindex="0">
           <div class="task-item-num">2</div>
           <div class="task-item-body">
             <div class="task-item-title">見積もりを依頼する</div>
@@ -315,7 +319,7 @@
           </div>
           <div class="task-item-arrow">›</div>
         </li>
-        <li class="task-item" onclick="location.href='order_detail.html'">
+        <li class="task-item" onclick="location.href='order_detail.html'" tabindex="0">
           <div class="task-item-num">3</div>
           <div class="task-item-body">
             <div class="task-item-title">承認フローを通じて発注する</div>
@@ -323,7 +327,7 @@
           </div>
           <div class="task-item-arrow">›</div>
         </li>
-        <li class="task-item" onclick="location.href='order_detail.html'">
+        <li class="task-item" onclick="location.href='order_detail.html'" tabindex="0">
           <div class="task-item-num">4</div>
           <div class="task-item-body">
             <div class="task-item-title">納品・受取処理をする</div>
@@ -331,7 +335,7 @@
           </div>
           <div class="task-item-arrow">›</div>
         </li>
-        <li class="task-item" onclick="location.href='order_detail.html'">
+        <li class="task-item" onclick="location.href='order_detail.html'" tabindex="0">
           <div class="task-item-num">5</div>
           <div class="task-item-body">
             <div class="task-item-title">定期発注・お気に入りリストを使う</div>
@@ -347,11 +351,11 @@
   <div class="role-panel" id="panel-finance">
     <div class="panel-box">
       <div class="panel-box-header">
-        <div class="panel-box-title">経理担当者向けガイド</div>
+        <h3 class="panel-box-title">経理担当者向けガイド</h3>
         <a href="#" class="panel-all-link">すべてのカテゴリを見る ›</a>
       </div>
       <ul class="task-list">
-        <li class="task-item">
+        <li class="task-item" tabindex="0" role="button">
           <div class="task-item-num">1</div>
           <div class="task-item-body">
             <div class="task-item-title">請求書をダウンロードする</div>
@@ -359,7 +363,7 @@
           </div>
           <div class="task-item-arrow">›</div>
         </li>
-        <li class="task-item">
+        <li class="task-item" tabindex="0" role="button">
           <div class="task-item-num">2</div>
           <div class="task-item-body">
             <div class="task-item-title">支払い方法を登録・変更する</div>
@@ -367,7 +371,7 @@
           </div>
           <div class="task-item-arrow">›</div>
         </li>
-        <li class="task-item">
+        <li class="task-item" tabindex="0" role="button">
           <div class="task-item-num">3</div>
           <div class="task-item-body">
             <div class="task-item-title">購買履歴をCSVで出力する</div>
@@ -375,7 +379,7 @@
           </div>
           <div class="task-item-arrow">›</div>
         </li>
-        <li class="task-item">
+        <li class="task-item" tabindex="0" role="button">
           <div class="task-item-num">4</div>
           <div class="task-item-body">
             <div class="task-item-title">支払い期日のアラートを設定する</div>
@@ -391,11 +395,11 @@
   <div class="role-panel" id="panel-admin">
     <div class="panel-box">
       <div class="panel-box-header">
-        <div class="panel-box-title">管理者向けガイド</div>
+        <h3 class="panel-box-title">管理者向けガイド</h3>
         <a href="#" class="panel-all-link">すべてのカテゴリを見る ›</a>
       </div>
       <ul class="task-list">
-        <li class="task-item">
+        <li class="task-item" tabindex="0" role="button">
           <div class="task-item-num">1</div>
           <div class="task-item-body">
             <div class="task-item-title">新しいユーザーを招待する</div>
@@ -403,7 +407,7 @@
           </div>
           <div class="task-item-arrow">›</div>
         </li>
-        <li class="task-item">
+        <li class="task-item" tabindex="0" role="button">
           <div class="task-item-num">2</div>
           <div class="task-item-body">
             <div class="task-item-title">部門・コストセンターを設定する</div>
@@ -411,7 +415,7 @@
           </div>
           <div class="task-item-arrow">›</div>
         </li>
-        <li class="task-item">
+        <li class="task-item" tabindex="0" role="button">
           <div class="task-item-num">3</div>
           <div class="task-item-body">
             <div class="task-item-title">承認ルールを設定する</div>
@@ -419,7 +423,7 @@
           </div>
           <div class="task-item-arrow">›</div>
         </li>
-        <li class="task-item">
+        <li class="task-item" tabindex="0" role="button">
           <div class="task-item-num">4</div>
           <div class="task-item-body">
             <div class="task-item-title">外部システムと連携する</div>
@@ -439,29 +443,39 @@
     <p>サポートチームが平日 9:00〜18:00 に対応します。</p>
   </div>
   <div class="contact-btns">
-    <button class="btn btn-outline">メールで問い合わせ</button>
-    <button class="btn btn-primary">チャットで問い合わせ</button>
+    <button class="btn btn-outline" type="button">メールで問い合わせ</button>
+    <button class="btn btn-primary" type="button">チャットで問い合わせ</button>
   </div>
 </div>
+</main>
 
 <!-- ===== Footer ===== -->
 <footer>
-  <div>
+  <nav aria-label="フッターナビゲーション">
     <a href="#">利用規約</a>
     <a href="#">プライバシーポリシー</a>
     <a href="#">会社概要</a>
     <a href="#">お問い合わせ</a>
-  </div>
+  </nav>
   <p style="margin-top:12px;">© 2026 わくわくEC. All rights reserved.</p>
 </footer>
 
 <script>
   function switchRole(role) {
-    document.querySelectorAll('.role-card').forEach(c => c.classList.remove('active'));
-    document.querySelector('.role-card-' + role).classList.add('active');
+    document.querySelectorAll('.role-card').forEach(c => {
+      c.classList.remove('active');
+      c.setAttribute('aria-selected', 'false');
+    });
+    const activeCard = document.querySelector('.role-card-' + role);
+    activeCard.classList.add('active');
+    activeCard.setAttribute('aria-selected', 'true');
     document.querySelectorAll('.role-panel').forEach(p => p.classList.remove('active'));
     document.getElementById('panel-' + role).classList.add('active');
   }
+
+  // 初期状態のaria属性を設定
+  document.querySelector('.role-card-buyer').setAttribute('aria-selected', 'true');
+  document.querySelectorAll('.role-card:not(.role-card-buyer)').forEach(c => c.setAttribute('aria-selected', 'false'));
 </script>
 
 </body>
