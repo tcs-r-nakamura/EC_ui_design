@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ヘルプセンター | BtoB ECサイト</title>
+  <title>ヘルプセンター | わくわくEC</title>
   <style>
     /* ===== Reset & Base ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", sans-serif;
-      font-size: 14px;
+      font-size: 16px;
       color: #1a1a2e;
       background: #f5f7fa;
       line-height: 1.7;
@@ -25,53 +25,43 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 56px;
+      height: 60px;
       position: sticky;
       top: 0;
       z-index: 100;
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
     .logo {
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 700;
       letter-spacing: 0.05em;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
-    .logo-icon {
-      width: 28px; height: 28px;
-      background: #4da6e8;
-      border-radius: 6px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px;
-    }
-    .header-nav { display: flex; gap: 24px; font-size: 13px; }
+    .header-nav { display: flex; gap: 28px; font-size: 15px; }
     .header-nav a { opacity: 0.8; transition: opacity 0.2s; }
     .header-nav a:hover { opacity: 1; }
 
-    /* ===== Hero / Search ===== */
+    /* ===== Hero ===== */
     .hero {
       background: linear-gradient(135deg, #1a3a5c 0%, #1e5c8a 60%, #2a7dbf 100%);
       color: #fff;
       text-align: center;
-      padding: 56px 24px 64px;
+      padding: 56px 24px 52px;
     }
-    .hero h1 { font-size: 26px; font-weight: 700; margin-bottom: 8px; }
-    .hero p { font-size: 14px; opacity: 0.85; margin-bottom: 28px; }
+    .hero h1 { font-size: 28px; font-weight: 700; margin-bottom: 10px; }
+    .hero p  { font-size: 16px; opacity: 0.85; margin-bottom: 32px; }
     .search-box {
       display: flex;
-      max-width: 560px;
+      max-width: 580px;
       margin: 0 auto;
-      border-radius: 8px;
+      border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 4px 20px rgba(0,0,0,0.25);
     }
     .search-box input {
       flex: 1;
       border: none;
-      padding: 14px 20px;
-      font-size: 14px;
+      padding: 16px 22px;
+      font-size: 16px;
       outline: none;
       font-family: inherit;
     }
@@ -79,293 +69,132 @@
       background: #f4841a;
       color: #fff;
       border: none;
-      padding: 14px 24px;
-      font-size: 14px;
+      padding: 16px 28px;
+      font-size: 16px;
       font-weight: 700;
       cursor: pointer;
       font-family: inherit;
       transition: background 0.2s;
     }
     .search-box button:hover { background: #d9720f; }
-    .search-tags { margin-top: 16px; font-size: 12px; opacity: 0.75; }
-    .search-tags span {
-      display: inline-block;
-      background: rgba(255,255,255,0.15);
-      border-radius: 20px;
-      padding: 3px 12px;
-      margin: 4px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .search-tags span:hover { background: rgba(255,255,255,0.3); }
 
-    /* ===== Main Layout ===== */
-    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
-
-    /* ===== Section Title ===== */
-    .section-header {
-      padding: 40px 0 20px;
-      display: flex;
-      align-items: baseline;
-      gap: 12px;
+    /* ===== Role Section ===== */
+    .role-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 52px 24px 64px;
     }
-    .section-header h2 { font-size: 18px; font-weight: 700; color: #1a3a5c; }
-    .section-header span { font-size: 12px; color: #6b7280; }
-
-    /* ===== Category Cards (BASE style) ===== */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 16px;
-      padding-bottom: 40px;
-    }
-    .card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 24px 20px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-      cursor: pointer;
-      transition: transform 0.18s, box-shadow 0.18s;
-      border: 2px solid transparent;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(26,58,92,0.12);
-      border-color: #4da6e8;
-    }
-    .card-icon {
-      width: 48px; height: 48px;
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 24px;
-    }
-    .card-icon.blue   { background: #e8f4fd; }
-    .card-icon.green  { background: #e8f8f0; }
-    .card-icon.orange { background: #fff3e8; }
-    .card-icon.purple { background: #f3eeff; }
-    .card-icon.red    { background: #fdeaea; }
-    .card-icon.teal   { background: #e6f7f7; }
-    .card h3 { font-size: 14px; font-weight: 700; color: #1a3a5c; }
-    .card p  { font-size: 12px; color: #6b7280; line-height: 1.6; }
-    .card-count {
-      margin-top: auto;
-      font-size: 11px;
-      color: #4da6e8;
-      font-weight: 600;
-    }
-
-    /* ===== Scene Guide (Mercari style) ===== */
-    .scene-section { padding-bottom: 48px; }
-    .scene-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
-    }
-    .scene-card {
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-      transition: box-shadow 0.2s;
-    }
-    .scene-card:hover { box-shadow: 0 6px 20px rgba(26,58,92,0.12); }
-    .scene-card-header {
-      padding: 16px 20px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      border-bottom: 1px solid #f0f0f5;
-    }
-    .scene-badge {
-      background: #1a3a5c;
-      color: #fff;
-      font-size: 11px;
+    .role-section-title {
+      text-align: center;
+      font-size: 20px;
       font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 20px;
-      white-space: nowrap;
-    }
-    .scene-card-header h3 { font-size: 15px; font-weight: 700; color: #1a3a5c; }
-    .scene-items { padding: 8px 0; }
-    .scene-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      padding: 10px 20px;
-      border-bottom: 1px solid #f7f7fb;
-      cursor: pointer;
-      transition: background 0.15s;
-    }
-    .scene-item:last-child { border-bottom: none; }
-    .scene-item:hover { background: #f0f7ff; }
-    .scene-item-icon { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
-    .scene-item-title { font-size: 13px; font-weight: 600; color: #1a3a5c; }
-    .scene-item-desc  { font-size: 11px; color: #6b7280; margin-top: 2px; }
-    .scene-item-arrow { margin-left: auto; color: #4da6e8; font-size: 12px; flex-shrink: 0; align-self: center; }
-
-    /* ===== Feature Detail (Askul style — flow with visuals) ===== */
-    .feature-section { padding-bottom: 56px; }
-    .feature-detail {
-      background: #fff;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-    }
-    .feature-tabs {
-      display: flex;
-      border-bottom: 2px solid #f0f0f5;
-      overflow-x: auto;
-    }
-    .feature-tab {
-      padding: 14px 24px;
-      font-size: 13px;
-      font-weight: 600;
-      color: #6b7280;
-      cursor: pointer;
-      white-space: nowrap;
-      border-bottom: 2px solid transparent;
-      margin-bottom: -2px;
-      transition: color 0.2s;
-    }
-    .feature-tab.active {
       color: #1a3a5c;
-      border-bottom-color: #1a3a5c;
+      margin-bottom: 8px;
     }
-    .feature-body { padding: 32px 36px; }
-    .feature-lead {
-      font-size: 14px;
-      color: #4b5563;
-      margin-bottom: 32px;
-      max-width: 640px;
-      line-height: 1.8;
+    .role-section-sub {
+      text-align: center;
+      font-size: 15px;
+      color: #6b7280;
+      margin-bottom: 36px;
     }
 
-    /* Step flow */
-    .step-flow { display: flex; flex-direction: column; gap: 0; }
-    .step {
+    /* ===== Role Cards ===== */
+    .role-cards {
       display: grid;
-      grid-template-columns: 52px 1fr;
-      gap: 20px;
-      position: relative;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
     }
-    .step:not(:last-child)::before {
-      content: '';
-      position: absolute;
-      left: 25px;
-      top: 52px;
-      bottom: -8px;
-      width: 2px;
-      background: #e0eaf4;
+    .role-card {
+      background: #fff;
+      border: 2px solid #d0dae6;
+      border-radius: 14px;
+      padding: 28px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
     }
-    .step-left { display: flex; flex-direction: column; align-items: center; }
-    .step-num {
-      width: 52px; height: 52px;
-      border-radius: 50%;
-      background: #1a3a5c;
-      color: #fff;
-      display: flex; align-items: center; justify-content: center;
+    .role-card:hover {
+      border-color: #a0b4c8;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(26,58,92,0.1);
+    }
+    .role-card-name {
       font-size: 18px;
       font-weight: 700;
-      flex-shrink: 0;
+      margin-bottom: 8px;
+      color: #1a3a5c;
     }
-    .step-right { padding-bottom: 32px; }
-    .step-title { font-size: 15px; font-weight: 700; color: #1a3a5c; margin-bottom: 6px; margin-top: 12px; }
-    .step-desc  { font-size: 13px; color: #4b5563; line-height: 1.75; }
-    .step-visual {
-      margin-top: 16px;
-      background: #f5f7fa;
-      border: 1px solid #e8edf3;
-      border-radius: 10px;
-      padding: 20px;
+    .role-card-desc {
+      font-size: 14px;
+      color: #6b7280;
+      line-height: 1.6;
+    }
+    .role-card-buyer.active  { border-color: #1a6fa8; background: #e8f4fd; }
+    .role-card-buyer.active .role-card-name { color: #1a6fa8; }
+    .role-card-finance.active { border-color: #2a7a55; background: #e8f8f0; }
+    .role-card-finance.active .role-card-name { color: #2a7a55; }
+    .role-card-admin.active  { border-color: #6b3fa0; background: #f3eeff; }
+    .role-card-admin.active .role-card-name { color: #6b3fa0; }
+
+    /* ===== Role Panels ===== */
+    .role-panel { display: none; }
+    .role-panel.active { display: block; }
+
+    .panel-box {
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    .panel-box-header {
+      padding: 20px 28px;
+      border-bottom: 1px solid #f0f0f5;
       display: flex;
       align-items: center;
+      justify-content: space-between;
+    }
+    .panel-box-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #1a3a5c;
+    }
+    .panel-all-link {
+      font-size: 14px;
+      color: #1a6fa8;
+      font-weight: 600;
+    }
+    .panel-all-link:hover { text-decoration: underline; }
+
+    .task-list { padding: 8px 0; }
+    .task-item {
+      display: flex;
+      align-items: center;
+      padding: 16px 28px;
+      border-bottom: 1px solid #f5f5f9;
+      cursor: pointer;
+      transition: background 0.15s;
       gap: 16px;
     }
-    .step-visual-text { font-size: 12px; color: #6b7280; line-height: 1.7; }
-    .step-visual-text strong { color: #1a3a5c; font-size: 13px; display: block; margin-bottom: 4px; }
-
-    /* 画像プレースホルダー */
-    .img-placeholder {
-      margin-top: 16px;
-      border: 2px dashed #b3c8e0;
-      border-radius: 12px;
-      background: #f0f5fb;
-      width: 100%;
-      min-height: 220px;
+    .task-item:last-child { border-bottom: none; }
+    .task-item:hover { background: #f5f7fa; }
+    .task-item-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #e8f0f8;
+      color: #1a3a5c;
+      font-size: 13px;
+      font-weight: 700;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      padding: 32px;
-      text-align: center;
-    }
-    .img-placeholder-icon {
-      width: 64px; height: 64px;
-      background: #d0e4f5;
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .img-placeholder-icon svg { width: 36px; height: 36px; fill: #4d8ab5; }
-    .img-placeholder-label {
-      font-size: 18px;
-      font-weight: 700;
-      color: #1a3a5c;
-    }
-    .img-placeholder-sub {
-      font-size: 14px;
-      color: #6b7280;
-    }
-    .step-tip {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #fff8e6;
-      border: 1px solid #fcd97a;
-      border-radius: 6px;
-      padding: 8px 14px;
-      font-size: 12px;
-      color: #92650a;
-      margin-top: 12px;
-    }
-
-    /* ===== Popular Articles ===== */
-    .popular-section { padding-bottom: 56px; }
-    .article-list { display: flex; flex-direction: column; gap: 0; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-    .article-item {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 14px 20px;
-      border-bottom: 1px solid #f0f0f5;
-      cursor: pointer;
-      transition: background 0.15s;
-    }
-    .article-item:last-child { border-bottom: none; }
-    .article-item:hover { background: #f5f7fa; }
-    .article-rank {
-      font-size: 16px;
-      font-weight: 800;
-      color: #c0c8d4;
-      width: 28px;
-      text-align: center;
       flex-shrink: 0;
     }
-    .article-rank.top3 { color: #f4841a; }
-    .article-label {
-      font-size: 11px;
-      background: #e8f4fd;
-      color: #1a6fa8;
-      border-radius: 4px;
-      padding: 2px 8px;
-      flex-shrink: 0;
-      font-weight: 600;
-    }
-    .article-title { font-size: 13px; color: #1a3a5c; font-weight: 600; }
-    .article-arrow { margin-left: auto; color: #c0c8d4; font-size: 12px; }
+    .task-item-body { flex: 1; }
+    .task-item-title { font-size: 16px; font-weight: 600; color: #1a3a5c; }
+    .task-item-desc  { font-size: 14px; color: #6b7280; margin-top: 2px; }
+    .task-item-arrow { color: #c0c8d4; font-size: 18px; }
 
     /* ===== Contact Banner ===== */
     .contact-banner {
@@ -377,21 +206,24 @@
       align-items: center;
       justify-content: space-between;
       gap: 24px;
-      margin-bottom: 56px;
+      margin: 0 24px 56px;
+      max-width: 852px;
+      margin-left: auto;
+      margin-right: auto;
       flex-wrap: wrap;
     }
     .contact-banner h2 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
-    .contact-banner p  { font-size: 13px; opacity: 0.8; }
+    .contact-banner p  { font-size: 15px; opacity: 0.8; }
     .contact-btns { display: flex; gap: 12px; flex-shrink: 0; flex-wrap: wrap; }
     .btn {
-      padding: 12px 24px;
+      padding: 14px 26px;
       border-radius: 8px;
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 700;
       cursor: pointer;
-      transition: opacity 0.2s;
       border: 2px solid transparent;
       font-family: inherit;
+      transition: opacity 0.2s;
     }
     .btn:hover { opacity: 0.85; }
     .btn-primary { background: #f4841a; color: #fff; }
@@ -403,69 +235,16 @@
       color: rgba(255,255,255,0.6);
       text-align: center;
       padding: 24px;
-      font-size: 12px;
+      font-size: 14px;
     }
     footer a { color: rgba(255,255,255,0.8); margin: 0 12px; }
 
-    /* ===== Role Switcher ===== */
-    .role-switcher {
-      background: #f0f4f8;
-      border-bottom: 1px solid #d0dae6;
-      position: sticky;
-      top: 56px;
-      z-index: 90;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-    .role-switcher-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 12px 24px;
-      display: flex;
-      gap: 8px;
-    }
-    .role-tab {
-      flex: 1;
-      padding: 14px 12px;
-      text-align: center;
-      cursor: pointer;
-      border-radius: 8px;
-      border: 2px solid #d0dae6;
-      background: #fff;
-      transition: all 0.2s;
-      color: #6b7280;
-    }
-    .role-tab:hover {
-      border-color: #a0b4c8;
-      background: #f5f7fa;
-      color: #1a3a5c;
-    }
-    .role-tab-label {
-      font-size: 15px;
-      font-weight: 700;
-      display: block;
-      margin-bottom: 3px;
-    }
-    .role-tab-desc {
-      font-size: 11px;
-      opacity: 0.7;
-    }
-    .role-tab-buyer.active  { border-color: #1a6fa8; background: #e8f4fd; color: #1a6fa8; }
-    .role-tab-finance.active { border-color: #2a7a55; background: #e8f8f0; color: #2a7a55; }
-    .role-tab-admin.active  { border-color: #6b3fa0; background: #f3eeff; color: #6b3fa0; }
-
-    /* Role panels */
-    .role-panel { display: none; }
-    .role-panel.active { display: block; }
-
     /* ===== Responsive ===== */
     @media (max-width: 640px) {
-      .hero h1 { font-size: 20px; }
-      .card-grid { grid-template-columns: repeat(2, 1fr); }
-      .scene-grid { grid-template-columns: 1fr; }
-      .feature-body { padding: 20px; }
-      .contact-banner { padding: 28px 24px; }
+      .hero h1 { font-size: 22px; }
+      .role-cards { grid-template-columns: 1fr; }
       .header-nav { display: none; }
-      .role-tab-desc { display: none; }
+      .contact-banner { padding: 28px 24px; margin: 0 16px 40px; }
     }
   </style>
 </head>
@@ -473,9 +252,7 @@
 
 <!-- ===== Header ===== -->
 <header>
-  <div class="logo">
-    わくわくEC ヘルプセンター
-  </div>
+  <div class="logo">わくわくEC ヘルプセンター</div>
   <nav class="header-nav">
     <a href="#">トップ</a>
     <a href="#">お知らせ</a>
@@ -486,413 +263,186 @@
 <!-- ===== Hero / Search ===== -->
 <section class="hero">
   <h1>何をお探しですか？</h1>
-  <p>機能説明・操作手順・よくある質問をまとめています</p>
+  <p>機能説明・操作手順をまとめています</p>
   <div class="search-box">
-    <input type="text" placeholder="例：注文方法、請求書のダウンロード、アカウント設定…">
+    <input type="text" placeholder="例：注文方法、請求書のダウンロード、ユーザー追加…">
     <button>検索</button>
-  </div>
-  <div class="search-tags">
-    よく検索されるキーワード：
-    <span>注文履歴</span>
-    <span>見積もり</span>
-    <span>請求書PDF</span>
-    <span>支払い方法</span>
-    <span>納期確認</span>
-    <span>ユーザー追加</span>
   </div>
 </section>
 
-<!-- ===== Role Switcher ===== -->
-<div class="role-switcher">
-  <div class="role-switcher-inner">
-    <div class="role-tab role-tab-buyer active" onclick="switchRole('buyer')">
-      <span class="role-tab-label">購買担当者</span>
-      <span class="role-tab-desc">商品検索・注文・発注</span>
+<!-- ===== Role Section ===== -->
+<section class="role-section">
+  <p class="role-section-title">あなたの役割を選んでください</p>
+  <p class="role-section-sub">役割に合わせた手順・機能説明をご案内します</p>
+
+  <!-- Role Cards -->
+  <div class="role-cards">
+    <div class="role-card role-card-buyer active" onclick="switchRole('buyer')">
+      <div class="role-card-name">購買担当者</div>
+      <div class="role-card-desc">商品の検索・注文・<br>発注・納品確認</div>
     </div>
-    <div class="role-tab role-tab-finance" onclick="switchRole('finance')">
-      <span class="role-tab-label">経理担当者</span>
-      <span class="role-tab-desc">請求・支払い・CSV出力</span>
+    <div class="role-card role-card-finance" onclick="switchRole('finance')">
+      <div class="role-card-name">経理担当者</div>
+      <div class="role-card-desc">請求書・支払い・<br>CSV出力・レポート</div>
     </div>
-    <div class="role-tab role-tab-admin" onclick="switchRole('admin')">
-      <span class="role-tab-label">管理者</span>
-      <span class="role-tab-desc">ユーザー・承認・連携設定</span>
+    <div class="role-card role-card-admin" onclick="switchRole('admin')">
+      <div class="role-card-name">管理者</div>
+      <div class="role-card-desc">ユーザー管理・承認設定・<br>システム連携</div>
     </div>
+  </div>
+
+  <!-- 購買担当者 -->
+  <div class="role-panel active" id="panel-buyer">
+    <div class="panel-box">
+      <div class="panel-box-header">
+        <div class="panel-box-title">購買担当者向けガイド</div>
+        <a href="order_detail.html" class="panel-all-link">すべてのカテゴリを見る ›</a>
+      </div>
+      <ul class="task-list">
+        <li class="task-item" onclick="location.href='order_detail.html'">
+          <div class="task-item-num">1</div>
+          <div class="task-item-body">
+            <div class="task-item-title">商品を検索・比較する</div>
+            <div class="task-item-desc">型番・キーワード・メーカーで絞り込む方法</div>
+          </div>
+          <div class="task-item-arrow">›</div>
+        </li>
+        <li class="task-item" onclick="location.href='order_detail.html'">
+          <div class="task-item-num">2</div>
+          <div class="task-item-body">
+            <div class="task-item-title">見積もりを依頼する</div>
+            <div class="task-item-desc">数量・納期を指定して見積依頼を送る手順</div>
+          </div>
+          <div class="task-item-arrow">›</div>
+        </li>
+        <li class="task-item" onclick="location.href='order_detail.html'">
+          <div class="task-item-num">3</div>
+          <div class="task-item-body">
+            <div class="task-item-title">承認フローを通じて発注する</div>
+            <div class="task-item-desc">上長への承認申請と発注確定までの手順</div>
+          </div>
+          <div class="task-item-arrow">›</div>
+        </li>
+        <li class="task-item" onclick="location.href='order_detail.html'">
+          <div class="task-item-num">4</div>
+          <div class="task-item-body">
+            <div class="task-item-title">納品・受取処理をする</div>
+            <div class="task-item-desc">入荷確認と受取ステータスの更新方法</div>
+          </div>
+          <div class="task-item-arrow">›</div>
+        </li>
+        <li class="task-item" onclick="location.href='order_detail.html'">
+          <div class="task-item-num">5</div>
+          <div class="task-item-body">
+            <div class="task-item-title">定期発注・お気に入りリストを使う</div>
+            <div class="task-item-desc">よく購入する商品を登録してすばやく発注</div>
+          </div>
+          <div class="task-item-arrow">›</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 経理担当者 -->
+  <div class="role-panel" id="panel-finance">
+    <div class="panel-box">
+      <div class="panel-box-header">
+        <div class="panel-box-title">経理担当者向けガイド</div>
+        <a href="#" class="panel-all-link">すべてのカテゴリを見る ›</a>
+      </div>
+      <ul class="task-list">
+        <li class="task-item">
+          <div class="task-item-num">1</div>
+          <div class="task-item-body">
+            <div class="task-item-title">請求書をダウンロードする</div>
+            <div class="task-item-desc">月次・案件別の請求書PDFを一括取得する方法</div>
+          </div>
+          <div class="task-item-arrow">›</div>
+        </li>
+        <li class="task-item">
+          <div class="task-item-num">2</div>
+          <div class="task-item-body">
+            <div class="task-item-title">支払い方法を登録・変更する</div>
+            <div class="task-item-desc">銀行振込・クレジットカードの設定手順</div>
+          </div>
+          <div class="task-item-arrow">›</div>
+        </li>
+        <li class="task-item">
+          <div class="task-item-num">3</div>
+          <div class="task-item-body">
+            <div class="task-item-title">購買履歴をCSVで出力する</div>
+            <div class="task-item-desc">期間・部門・カテゴリで絞り込んでエクスポート</div>
+          </div>
+          <div class="task-item-arrow">›</div>
+        </li>
+        <li class="task-item">
+          <div class="task-item-num">4</div>
+          <div class="task-item-body">
+            <div class="task-item-title">支払い期日のアラートを設定する</div>
+            <div class="task-item-desc">メール通知のタイミングと宛先の変更方法</div>
+          </div>
+          <div class="task-item-arrow">›</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 管理者 -->
+  <div class="role-panel" id="panel-admin">
+    <div class="panel-box">
+      <div class="panel-box-header">
+        <div class="panel-box-title">管理者向けガイド</div>
+        <a href="#" class="panel-all-link">すべてのカテゴリを見る ›</a>
+      </div>
+      <ul class="task-list">
+        <li class="task-item">
+          <div class="task-item-num">1</div>
+          <div class="task-item-body">
+            <div class="task-item-title">新しいユーザーを招待する</div>
+            <div class="task-item-desc">メールアドレスで招待し、権限ロールを設定する方法</div>
+          </div>
+          <div class="task-item-arrow">›</div>
+        </li>
+        <li class="task-item">
+          <div class="task-item-num">2</div>
+          <div class="task-item-body">
+            <div class="task-item-title">部門・コストセンターを設定する</div>
+            <div class="task-item-desc">組織構造に合わせた部門分けと予算上限の設定</div>
+          </div>
+          <div class="task-item-arrow">›</div>
+        </li>
+        <li class="task-item">
+          <div class="task-item-num">3</div>
+          <div class="task-item-body">
+            <div class="task-item-title">承認ルールを設定する</div>
+            <div class="task-item-desc">金額・カテゴリ別の承認者ルーティング設定</div>
+          </div>
+          <div class="task-item-arrow">›</div>
+        </li>
+        <li class="task-item">
+          <div class="task-item-num">4</div>
+          <div class="task-item-body">
+            <div class="task-item-title">外部システムと連携する</div>
+            <div class="task-item-desc">ERPやSlackへのAPI・Webhook連携手順</div>
+          </div>
+          <div class="task-item-arrow">›</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Contact Banner ===== -->
+<div class="contact-banner">
+  <div>
+    <h2>解決しない場合はお問い合わせください</h2>
+    <p>サポートチームが平日 9:00〜18:00 に対応します。</p>
+  </div>
+  <div class="contact-btns">
+    <button class="btn btn-outline">メールで問い合わせ</button>
+    <button class="btn btn-primary">チャットで問い合わせ</button>
   </div>
 </div>
-
-<!-- ===== Main ===== -->
-<main class="container">
-
-  <!-- ===== 購買担当者パネル ===== -->
-  <div class="role-panel active" id="panel-buyer">
-    <div class="section-header">
-      <h2>カテゴリから探す</h2>
-    </div>
-    <div class="card-grid">
-      <a href="order_detail.html" class="card">
-        <div class="card-icon blue">🛒</div>
-        <h3>注文・発注</h3>
-        <p>商品の注文方法、発注承認フロー、注文履歴の確認</p>
-        <div class="card-count">12 件の記事</div>
-      </a>
-      <div class="card">
-        <div class="card-icon green">📋</div>
-        <h3>見積もり</h3>
-        <p>見積もり依頼の出し方、見積書の保存・共有方法</p>
-        <div class="card-count">8 件の記事</div>
-      </div>
-      <div class="card">
-        <div class="card-icon teal">🚚</div>
-        <h3>配送・納期</h3>
-        <p>配送状況の確認、納期変更リクエスト、受取処理</p>
-        <div class="card-count">7 件の記事</div>
-      </div>
-    </div>
-    <div class="section-header">
-      <h2>よく使われる機能</h2>
-    </div>
-    <div class="scene-section">
-      <div class="scene-grid" style="grid-template-columns: 1fr;">
-        <div class="scene-card">
-          <div class="scene-card-header">
-            <div class="scene-badge" style="background:#1a6fa8;">購買担当者</div>
-            <h3>商品を購入する</h3>
-          </div>
-          <ul class="scene-items">
-            <li class="scene-item">
-              <div class="scene-item-body">
-                <div class="scene-item-title">商品検索・比較</div>
-                <div class="scene-item-desc">型番・キーワード・メーカーで絞り込む方法</div>
-              </div>
-              <div class="scene-item-arrow">›</div>
-            </li>
-            <li class="scene-item">
-              <div class="scene-item-body">
-                <div class="scene-item-title">見積もりを依頼する</div>
-                <div class="scene-item-desc">数量・納期の条件を指定して見積依頼を送る</div>
-              </div>
-              <div class="scene-item-arrow">›</div>
-            </li>
-            <li class="scene-item">
-              <div class="scene-item-body">
-                <div class="scene-item-title">承認フローを通じて発注する</div>
-                <div class="scene-item-desc">上長への承認申請と承認後の発注確定手順</div>
-              </div>
-              <div class="scene-item-arrow">›</div>
-            </li>
-            <li class="scene-item">
-              <div class="scene-item-body">
-                <div class="scene-item-title">納品・受取処理</div>
-                <div class="scene-item-desc">入荷確認と受取ステータスの更新</div>
-              </div>
-              <div class="scene-item-arrow">›</div>
-            </li>
-            <li class="scene-item">
-              <div class="scene-item-body">
-                <div class="scene-item-title">お気に入りリスト・定期発注</div>
-                <div class="scene-item-desc">よく購入する商品を登録してすばやく発注</div>
-              </div>
-              <div class="scene-item-arrow">›</div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="section-header"><h2>よく閲覧されている記事</h2></div>
-    <div class="popular-section">
-      <ul class="article-list">
-        <li class="article-item"><div class="article-rank top3">1</div><div class="article-label">注文</div><div class="article-title">初めて注文するときの手順（ステップバイステップ）</div><div class="article-arrow">›</div></li>
-        <li class="article-item"><div class="article-rank top3">2</div><div class="article-label">注文</div><div class="article-title">商品を検索・絞り込む方法</div><div class="article-arrow">›</div></li>
-        <li class="article-item"><div class="article-rank top3">3</div><div class="article-label">発注</div><div class="article-title">承認フローを通じて発注を確定する</div><div class="article-arrow">›</div></li>
-        <li class="article-item"><div class="article-rank">4</div><div class="article-label">配送</div><div class="article-title">配送状況・納期をリアルタイムで確認する</div><div class="article-arrow">›</div></li>
-        <li class="article-item"><div class="article-rank">5</div><div class="article-label">注文</div><div class="article-title">注文をキャンセル・変更する方法</div><div class="article-arrow">›</div></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- ===== 経理担当者パネル ===== -->
-  <div class="role-panel" id="panel-finance">
-    <div class="section-header">
-      <h2>カテゴリから探す</h2>
-    </div>
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-icon orange">💳</div>
-        <h3>請求・支払い</h3>
-        <p>請求書のダウンロード、支払い方法の変更・登録</p>
-        <div class="card-count">10 件の記事</div>
-      </div>
-      <div class="card">
-        <div class="card-icon blue">🛒</div>
-        <h3>注文・発注</h3>
-        <p>購買履歴の確認、発注データのエクスポート</p>
-        <div class="card-count">12 件の記事</div>
-      </div>
-    </div>
-    <div class="section-header">
-      <h2>よく使われる機能</h2>
-    </div>
-    <div class="scene-section">
-      <div class="scene-grid" style="grid-template-columns: 1fr;">
-        <div class="scene-card">
-          <div class="scene-card-header">
-            <div class="scene-badge" style="background:#2a7a55;">経理担当者</div>
-            <h3>請求・支払いを管理する</h3>
-          </div>
-          <ul class="scene-items">
-            <li class="scene-item">
-              <div class="scene-item-body">
-                <div class="scene-item-title">請求書をダウンロードする</div>
-                <div class="scene-item-desc">月次・案件別の請求書PDF一括取得</div>
-              </div>
-              <div class="scene-item-arrow">›</div>
-            </li>
-            <li class="scene-item">
-              <div class="scene-item-body">
-                <div class="scene-item-title">支払い方法を登録・変更する</div>
-                <div class="scene-item-desc">銀行振込・クレジットカードの設定手順</div>
-              </div>
-              <div class="scene-item-arrow">›</div>
-            </li>
-            <li class="scene-item">
-              <div class="scene-item-body">
-                <div class="scene-item-title">購買履歴をCSVで出力する</div>
-                <div class="scene-item-desc">期間・部門・カテゴリで絞り込んでエクスポート</div>
-              </div>
-              <div class="scene-item-arrow">›</div>
-            </li>
-            <li class="scene-item">
-              <div class="scene-item-body">
-                <div class="scene-item-title">支払い期日アラートを設定する</div>
-                <div class="scene-item-desc">メール通知のタイミングと宛先の変更</div>
-              </div>
-              <div class="scene-item-arrow">›</div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="section-header"><h2>よく閲覧されている記事</h2></div>
-    <div class="popular-section">
-      <ul class="article-list">
-        <li class="article-item"><div class="article-rank top3">1</div><div class="article-label">請求</div><div class="article-title">請求書・領収書をPDFでダウンロードする方法</div><div class="article-arrow">›</div></li>
-        <li class="article-item"><div class="article-rank top3">2</div><div class="article-label">連携</div><div class="article-title">購買データをCSVでエクスポートして会計ソフトに連携する</div><div class="article-arrow">›</div></li>
-        <li class="article-item"><div class="article-rank top3">3</div><div class="article-label">支払い</div><div class="article-title">支払い方法（銀行振込・カード）を変更する</div><div class="article-arrow">›</div></li>
-        <li class="article-item"><div class="article-rank">4</div><div class="article-label">請求</div><div class="article-title">月次レポートを部門別に出力する</div><div class="article-arrow">›</div></li>
-        <li class="article-item"><div class="article-rank">5</div><div class="article-label">支払い</div><div class="article-title">支払い期日のアラート通知を設定する</div><div class="article-arrow">›</div></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- ===== 管理者パネル ===== -->
-  <div class="role-panel" id="panel-admin">
-    <div class="section-header">
-      <h2>カテゴリから探す</h2>
-    </div>
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-icon purple">👥</div>
-        <h3>アカウント管理</h3>
-        <p>ユーザー追加・権限設定、組織情報の変更</p>
-        <div class="card-count">9 件の記事</div>
-      </div>
-      <div class="card">
-        <div class="card-icon red">🔗</div>
-        <h3>システム連携</h3>
-        <p>API連携、基幹システムとのデータ連携設定</p>
-        <div class="card-count">6 件の記事</div>
-      </div>
-      <div class="card">
-        <div class="card-icon blue">🛒</div>
-        <h3>注文・発注</h3>
-        <p>承認フロー設定、発注ルールの管理</p>
-        <div class="card-count">12 件の記事</div>
-      </div>
-    </div>
-    <div class="section-header">
-      <h2>よく使われる機能</h2>
-    </div>
-    <div class="scene-section">
-      <div class="scene-grid" style="grid-template-columns: 1fr;">
-        <div class="scene-card">
-          <div class="scene-card-header">
-            <div class="scene-badge" style="background:#6b3fa0;">管理者</div>
-            <h3>組織・ユーザーを管理する</h3>
-          </div>
-          <ul class="scene-items">
-            <li class="scene-item">
-              <div class="scene-item-body">
-                <div class="scene-item-title">新しいユーザーを招待する</div>
-                <div class="scene-item-desc">メールアドレスで招待し、権限ロールを設定</div>
-              </div>
-              <div class="scene-item-arrow">›</div>
-            </li>
-            <li class="scene-item">
-              <div class="scene-item-body">
-                <div class="scene-item-title">部門・コストセンターを設定する</div>
-                <div class="scene-item-desc">組織構造に合わせた部門分けと予算上限の設定</div>
-              </div>
-              <div class="scene-item-arrow">›</div>
-            </li>
-            <li class="scene-item">
-              <div class="scene-item-body">
-                <div class="scene-item-title">承認ルールを設定する</div>
-                <div class="scene-item-desc">金額・カテゴリ別の承認者ルーティング設定</div>
-              </div>
-              <div class="scene-item-arrow">›</div>
-            </li>
-            <li class="scene-item">
-              <div class="scene-item-body">
-                <div class="scene-item-title">外部システムと連携する</div>
-                <div class="scene-item-desc">ERPやSlackへのAPI・Webhook連携手順</div>
-              </div>
-              <div class="scene-item-arrow">›</div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="section-header"><h2>よく閲覧されている記事</h2></div>
-    <div class="popular-section">
-      <ul class="article-list">
-        <li class="article-item"><div class="article-rank top3">1</div><div class="article-label">アカウント</div><div class="article-title">ユーザーを追加して権限（ロール）を設定する</div><div class="article-arrow">›</div></li>
-        <li class="article-item"><div class="article-rank top3">2</div><div class="article-label">承認</div><div class="article-title">承認フローの設定方法と承認ルールのカスタマイズ</div><div class="article-arrow">›</div></li>
-        <li class="article-item"><div class="article-rank top3">3</div><div class="article-label">アカウント</div><div class="article-title">部門・コストセンターを作成・編集する</div><div class="article-arrow">›</div></li>
-        <li class="article-item"><div class="article-rank">4</div><div class="article-label">連携</div><div class="article-title">API連携の設定手順とアクセストークンの発行</div><div class="article-arrow">›</div></li>
-        <li class="article-item"><div class="article-rank">5</div><div class="article-label">アカウント</div><div class="article-title">ユーザーの権限を変更・削除する</div><div class="article-arrow">›</div></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- ③ 機能詳細・操作フロー（アスクル参考） -->
-  <div class="section-header">
-    <h2>機能詳細ガイド</h2>
-    <span>ステップごとに操作を確認できます</span>
-  </div>
-  <div class="feature-section">
-    <div class="feature-detail">
-      <div class="feature-tabs">
-        <div class="feature-tab active">注文の作成・承認フロー</div>
-        <div class="feature-tab">見積もり依頼</div>
-        <div class="feature-tab">請求書のダウンロード</div>
-        <div class="feature-tab">ユーザー権限管理</div>
-      </div>
-      <div class="feature-body">
-        <p class="feature-lead">
-          本サイトでは、担当者が注文を作成した後、あらかじめ設定された上長が承認することで発注が確定します。
-          以下のステップで操作を進めてください。
-        </p>
-
-        <div class="step-flow">
-
-          <!-- Step 1 -->
-          <div class="step">
-            <div class="step-left">
-              <div class="step-num">1</div>
-            </div>
-            <div class="step-right">
-              <div class="step-title">商品をカートに追加する</div>
-              <div class="step-desc">
-                商品一覧ページで目的の商品を選び、数量を入力して「カートに追加」ボタンをクリックします。
-                型番検索や絞り込み機能を使うと目的の商品をすばやく見つけられます。
-              </div>
-              <div class="img-placeholder">
-                <div class="img-placeholder-icon">
-                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zm-2 0H5V5h14v14zm-7-2a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
-                </div>
-                <div class="img-placeholder-label">商品詳細ページのカートエリアのスクリーンショット</div>
-                <div class="img-placeholder-sub">数量入力フィールドと「カートに追加」ボタンが表示された実画面イメージ</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 2 -->
-          <div class="step">
-            <div class="step-left">
-              <div class="step-num">2</div>
-            </div>
-            <div class="step-right">
-              <div class="step-title">注文内容を確認して申請する</div>
-              <div class="step-desc">
-                カートページで商品・数量・配送先・希望納期を確認し、「承認申請」ボタンをクリックします。
-                承認者は自動的に設定済みのルールに基づいて選出されます。
-              </div>
-              <div class="img-placeholder">
-                <div class="img-placeholder-icon">
-                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zm-2 0H5V5h14v14zm-7-2a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
-                </div>
-                <div class="img-placeholder-label">カート確認画面のスクリーンショット</div>
-                <div class="img-placeholder-sub">商品リスト・合計金額・配送先・備考欄が並ぶ確認画面の実画面イメージ</div>
-              </div>
-              <div class="step-tip">
-                 金額が承認不要ラインを下回る場合は、承認ステップをスキップして即時発注されます。
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 3 -->
-          <div class="step">
-            <div class="step-left">
-              <div class="step-num">3</div>
-            </div>
-            <div class="step-right">
-              <div class="step-title">承認者が内容を確認・承認する</div>
-              <div class="step-desc">
-                承認者にはメール通知が届きます。承認者はリンクからログインし、
-                「注文承認」ページで内容を確認後、「承認する」または「差し戻す」を選択します。
-              </div>
-              <div class="img-placeholder">
-                <div class="img-placeholder-icon">
-                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zm-2 0H5V5h14v14zm-7-2a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
-                </div>
-                <div class="img-placeholder-label">承認通知メールのスクリーンショット</div>
-                <div class="img-placeholder-sub">申請者名・商品概要・合計金額と承認ボタンが含まれるメール画面の実画面イメージ</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 4 -->
-          <div class="step">
-            <div class="step-left">
-              <div class="step-num">4</div>
-            </div>
-            <div class="step-right">
-              <div class="step-title">発注確定・納期の確認</div>
-              <div class="step-desc">
-                承認完了後、自動的に発注が確定し、申請者へ確定通知メールが送信されます。
-                「注文履歴」ページで発注番号・配送状況・予定納期をリアルタイムで確認できます。
-              </div>
-              <div class="img-placeholder">
-                <div class="img-placeholder-icon">
-                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zm-2 0H5V5h14v14zm-7-2a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
-                </div>
-                <div class="img-placeholder-label">注文履歴ページのスクリーンショット</div>
-                <div class="img-placeholder-sub">発注番号・ステータス・追跡番号などが一覧表示された実画面イメージ</div>
-              </div>
-              <div class="step-tip">
-                 追跡番号をクリックすると配送会社のページへ直接遷移し、配送状況をリアルタイムで確認できます。
-              </div>
-            </div>
-          </div>
-
-        </div><!-- /step-flow -->
-      </div>
-    </div>
-  </div>
-
-  <!-- お問い合わせバナー -->
-  <div class="contact-banner">
-    <div>
-      <h2>解決しない場合はお問い合わせください</h2>
-      <p>サポートチームが平日 9:00〜18:00 に対応します。お気軽にご連絡ください。</p>
-    </div>
-    <div class="contact-btns">
-      <button class="btn btn-outline"> メールで問い合わせ</button>
-      <button class="btn btn-primary"> チャットで問い合わせ</button>
-    </div>
-  </div>
-
-</main>
 
 <!-- ===== Footer ===== -->
 <footer>
@@ -902,18 +452,17 @@
     <a href="#">会社概要</a>
     <a href="#">お問い合わせ</a>
   </div>
-  <p style="margin-top:12px;">© 2026 ProBiz EC. All rights reserved.</p>
+  <p style="margin-top:12px;">© 2026 わくわくEC. All rights reserved.</p>
 </footer>
 
 <script>
   function switchRole(role) {
-    // タブの切り替え
-    document.querySelectorAll('.role-tab').forEach(t => t.classList.remove('active'));
-    document.querySelector('.role-tab-' + (role === 'buyer' ? 'buyer' : role === 'finance' ? 'finance' : 'admin')).classList.add('active');
-    // パネルの切り替え
+    document.querySelectorAll('.role-card').forEach(c => c.classList.remove('active'));
+    document.querySelector('.role-card-' + role).classList.add('active');
     document.querySelectorAll('.role-panel').forEach(p => p.classList.remove('active'));
     document.getElementById('panel-' + role).classList.add('active');
   }
 </script>
+
 </body>
 </html>
