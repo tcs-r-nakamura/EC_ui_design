@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>配送・納期 | わくわくEC ヘルプセンター</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", sans-serif;
+      font-size: 14px;
+      color: #1a1a2e;
+      background: #f5f7fa;
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ===== Header ===== */
+    header {
+      background: #1a3a5c;
+      color: #fff;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .logo {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+    .logo-icon {
+      width: 28px; height: 28px;
+      background: #4da6e8;
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+    }
+    .header-nav { display: flex; gap: 24px; font-size: 13px; }
+    .header-nav a { opacity: 0.8; transition: opacity 0.2s; }
+    .header-nav a:hover { opacity: 1; }
+
+    /* ===== Breadcrumb ===== */
+    .breadcrumb {
+      background: #fff;
+      border-bottom: 1px solid #e8edf3;
+      padding: 10px 24px;
+      font-size: 12px;
+      color: #6b7280;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .breadcrumb a { color: #1a6fa8; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb .sep { color: #c0c8d4; }
+    .breadcrumb .current { color: #1a1a2e; font-weight: 600; }
+
+    /* ===== Category Hero ===== */
+    .category-hero {
+      background: linear-gradient(135deg, #1a3a5c 0%, #1e5c8a 60%, #2a7dbf 100%);
+      color: #fff;
+      padding: 36px 24px 40px;
+    }
+    .category-hero-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .category-hero-icon {
+      width: 64px; height: 64px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 32px;
+      flex-shrink: 0;
+    }
+    .category-hero h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+    .category-hero p  { font-size: 13px; opacity: 0.85; }
+    .category-hero-meta {
+      margin-left: auto;
+      text-align: right;
+      font-size: 12px;
+      opacity: 0.7;
+      flex-shrink: 0;
+    }
+
+    /* ===== Layout ===== */
+    .page-body {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 24px 56px;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* ===== Sidebar ===== */
+    .sidebar { position: sticky; top: 72px; }
+    .sidebar-box {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      margin-bottom: 16px;
+    }
+    .sidebar-title {
+      background: #f0f4f8;
+      padding: 10px 16px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #6b7280;
+      letter-spacing: 0.05em;
+    }
+    .sidebar-list { }
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      font-size: 13px;
+      color: #1a3a5c;
+      border-bottom: 1px solid #f0f0f5;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .sidebar-item:last-child { border-bottom: none; }
+    .sidebar-item:hover { background: #f0f7ff; }
+    .sidebar-item.active {
+      background: #e8f4fd;
+      font-weight: 700;
+      color: #1a6fa8;
+      border-left: 3px solid #1a6fa8;
+    }
+    .sidebar-item .dot { font-size: 10px; }
+
+    /* ===== Article List Section ===== */
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #6b7280;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+      margin-top: 32px;
+    }
+    .section-label:first-child { margin-top: 0; }
+
+    /* ===== Feature Card ===== */
+    .feature-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      margin-bottom: 16px;
+      border: 1px solid #e8edf3;
+      transition: box-shadow 0.2s;
+    }
+    .feature-card:hover { box-shadow: 0 4px 16px rgba(26,58,92,0.1); }
+
+    .feature-card-header {
+      padding: 20px 24px 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      cursor: pointer;
+    }
+    .feature-card-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: #e8f4fd;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .feature-card-title-area { flex: 1; }
+    .feature-card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1a3a5c;
+      margin-bottom: 4px;
+    }
+    .feature-card-desc { font-size: 12px; color: #6b7280; line-height: 1.6; }
+    .feature-card-toggle {
+      font-size: 18px;
+      color: #4da6e8;
+      align-self: center;
+      transition: transform 0.2s;
+    }
+    .feature-card.open .feature-card-toggle { transform: rotate(90deg); }
+
+    /* Feature Card Body */
+    .feature-card-body {
+      display: none;
+      padding: 0 24px 24px;
+      border-top: 1px solid #f0f0f5;
+    }
+    .feature-card.open .feature-card-body { display: block; }
+
+    /* Step flow inside card */
+    .step-flow { display: flex; flex-direction: column; gap: 0; padding-top: 20px; }
+    .step {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 16px;
+      position: relative;
+    }
+    .step:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 21px;
+      top: 44px;
+      bottom: -8px;
+      width: 2px;
+      background: #e0eaf4;
+    }
+    .step-num {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: #1a3a5c;
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .step-right { padding-bottom: 28px; }
+    .step-title { font-size: 14px; font-weight: 700; color: #1a3a5c; margin-top: 10px; margin-bottom: 6px; }
+    .step-desc  { font-size: 13px; color: #4b5563; line-height: 1.75; }
+    .step-visual {
+      margin-top: 12px;
+      background: #f5f7fa;
+      border: 1px solid #e8edf3;
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .step-visual-text { font-size: 12px; color: #6b7280; line-height: 1.7; }
+    .step-visual-text strong { color: #1a3a5c; font-size: 13px; display: block; margin-bottom: 3px; }
+
+    /* 画像プレースホルダー */
+    .img-placeholder {
+      margin-top: 16px;
+      border: 2px dashed #b3c8e0;
+      border-radius: 12px;
+      background: #f0f5fb;
+      width: 100%;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 32px;
+      text-align: center;
+    }
+    .img-placeholder-icon {
+      width: 64px; height: 64px;
+      background: #d0e4f5;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .img-placeholder-icon svg { width: 36px; height: 36px; fill: #4d8ab5; }
+    .img-placeholder-label {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1a3a5c;
+    }
+    .img-placeholder-sub {
+      font-size: 14px;
+      color: #6b7280;
+    }
+
+    /* Tip / Note */
+    .tip {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      background: #fff8e6;
+      border: 1px solid #fcd97a;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #92650a;
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+    .note {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      background: #f0f7ff;
+      border: 1px solid #b3d4f5;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #1a5a8a;
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+
+    /* Sub article list */
+    .sub-article-list { margin-top: 16px; }
+    .sub-article {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f0f5;
+      font-size: 13px;
+      color: #1a3a5c;
+      cursor: pointer;
+    }
+    .sub-article:hover { color: #1a6fa8; }
+    .sub-article:last-child { border-bottom: none; }
+    .sub-article-icon { font-size: 15px; }
+    .sub-article-label {
+      font-size: 11px;
+      background: #e8f4fd;
+      color: #1a6fa8;
+      border-radius: 4px;
+      padding: 2px 7px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    .sub-article-arrow { margin-left: auto; color: #c0c8d4; font-size: 12px; }
+
+    /* ===== Related ===== */
+    .related-box {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      margin-top: 28px;
+    }
+    .related-box-title {
+      padding: 14px 20px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #1a3a5c;
+      border-bottom: 1px solid #f0f0f5;
+    }
+    .related-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      border-bottom: 1px solid #f0f0f5;
+      font-size: 13px;
+      color: #1a3a5c;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .related-item:last-child { border-bottom: none; }
+    .related-item:hover { background: #f0f7ff; }
+    .related-cat {
+      font-size: 10px;
+      background: #f0f0f5;
+      color: #6b7280;
+      border-radius: 4px;
+      padding: 2px 7px;
+      flex-shrink: 0;
+    }
+
+    /* ===== Contact Banner ===== */
+    .contact-banner {
+      background: linear-gradient(135deg, #1e5c8a, #1a3a5c);
+      color: #fff;
+      border-radius: 16px;
+      padding: 32px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+    .contact-banner h2 { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+    .contact-banner p  { font-size: 12px; opacity: 0.8; }
+    .contact-btns { display: flex; gap: 10px; flex-shrink: 0; flex-wrap: wrap; }
+    .btn {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      border: 2px solid transparent;
+      font-family: inherit;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary { background: #f4841a; color: #fff; }
+    .btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,0.5); }
+
+    /* ===== Footer ===== */
+    footer {
+      background: #1a3a5c;
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 24px;
+      font-size: 12px;
+    }
+    footer a { color: rgba(255,255,255,0.8); margin: 0 12px; }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 720px) {
+      .page-body { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .contact-banner { padding: 24px 20px; }
+      .header-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header>
+  <div class="logo" onclick="location.href='help_page_sample.html'">
+    わくわくEC ヘルプセンター
+  </div>
+  <nav class="header-nav">
+    <a href="help_page_sample.html">トップ</a>
+    <a href="#">お知らせ</a>
+    <a href="#">お問い合わせ</a>
+  </nav>
+</header>
+
+<!-- ===== Breadcrumb ===== -->
+<div class="breadcrumb">
+  <a href="help_page_sample.html">ヘルプトップ</a>
+  <span class="sep">›</span>
+  <span class="current">配送・納期</span>
+</div>
+
+<!-- ===== Category Hero ===== -->
+<section class="category-hero">
+  <div class="category-hero-inner">
+    <div>
+      <h1>配送・納期</h1>
+      <p>配送状況の確認・納期変更・配送先の管理・受取処理など、配送に関する機能を説明します</p>
+    </div>
+    <div class="category-hero-meta">
+      7 件の記事
+    </div>
+  </div>
+</section>
+
+<!-- ===== Page Body ===== -->
+<div class="page-body">
+
+  <!-- ===== Sidebar ===== -->
+  <aside class="sidebar">
+    <div class="sidebar-box">
+      <div class="sidebar-title">このカテゴリの記事</div>
+      <ul class="sidebar-list">
+        <li class="sidebar-item active"><span class="dot">●</span> 配送状況・納期を確認する</li>
+        <li class="sidebar-item"><span class="dot">○</span> 配送先を登録・管理する</li>
+        <li class="sidebar-item"><span class="dot">○</span> 複数配送先へ分割納品する</li>
+        <li class="sidebar-item"><span class="dot">○</span> 納期変更をリクエストする</li>
+        <li class="sidebar-item"><span class="dot">○</span> 受取処理をする</li>
+        <li class="sidebar-item"><span class="dot">○</span> 配送トラブルを報告する</li>
+        <li class="sidebar-item"><span class="dot">○</span> 不在時の再配達を依頼する</li>
+      </ul>
+    </div>
+    <div class="sidebar-box">
+      <div class="sidebar-title">購買担当者向け</div>
+      <ul class="sidebar-list">
+        <li class="sidebar-item" onclick="location.href='estimate_detail.html'">📋 見積もり</li>
+        <li class="sidebar-item" onclick="location.href='order_detail.html'">🛒 注文・発注</li>
+      </ul>
+    </div>
+    <div class="sidebar-box">
+      <div class="sidebar-title">経理担当者向け</div>
+      <ul class="sidebar-list">
+        <li class="sidebar-item">💳 請求・支払い</li>
+      </ul>
+    </div>
+    <div class="sidebar-box">
+      <div class="sidebar-title">管理者向け</div>
+      <ul class="sidebar-list">
+        <li class="sidebar-item">👥 アカウント管理</li>
+        <li class="sidebar-item">🔗 システム連携</li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- ===== Main Content ===== -->
+  <main>
+
+    <!-- セクション①：基本の操作 -->
+    <div class="section-label">基本の操作</div>
+
+    <!-- Feature: 配送状況・納期を確認する -->
+    <div class="feature-card open" id="card-tracking">
+      <div class="feature-card-header" onclick="toggleCard('card-tracking')">
+        <div class="feature-card-title-area">
+          <div class="feature-card-title">配送状況・納期を確認する</div>
+          <div class="feature-card-desc">発注済み商品の配送ステータス・追跡番号・予定納期をリアルタイムで確認する方法</div>
+        </div>
+        <div class="feature-card-toggle">›</div>
+      </div>
+      <div class="feature-card-body">
+        <div class="step-flow">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-right">
+              <div class="step-title">注文履歴から配送状況を確認する</div>
+              <div class="step-desc">
+                上部ナビの「注文履歴」をクリックします。一覧から確認したい注文を選ぶと、配送ステータス・追跡番号・予定納期が表示されます。
+              </div>
+              <div class="img-placeholder">
+                <div class="img-placeholder-icon">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zm-2 0H5V5h14v14zm-7-2a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+                </div>
+                <div class="img-placeholder-label">注文履歴の配送状況画面のスクリーンショット</div>
+                <div class="img-placeholder-sub">ステータス（処理中・出荷済・配送中・納品完了）と追跡番号が並ぶ実画面イメージ</div>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-right">
+              <div class="step-title">追跡番号で配送状況を追跡する</div>
+              <div class="step-desc">
+                追跡番号をクリックすると配送会社のトラッキングページへ直接遷移し、現在地・配達予定時刻を確認できます。
+              </div>
+              <div class="img-placeholder">
+                <div class="img-placeholder-icon">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zm-2 0H5V5h14v14zm-7-2a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+                </div>
+                <div class="img-placeholder-label">追跡番号リンクのスクリーンショット</div>
+                <div class="img-placeholder-sub">注文詳細ページの追跡番号リンクと配送会社名が表示された実画面イメージ</div>
+              </div>
+              <div class="tip"> 出荷後、追跡番号が反映されるまで数時間かかる場合があります。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature: 配送先を登録・管理する -->
+    <div class="feature-card" id="card-address">
+      <div class="feature-card-header" onclick="toggleCard('card-address')">
+        <div class="feature-card-title-area">
+          <div class="feature-card-title">配送先を登録・管理する</div>
+          <div class="feature-card-desc">会社・支店・倉庫など複数の配送先を事前に登録しておく方法</div>
+        </div>
+        <div class="feature-card-toggle">›</div>
+      </div>
+      <div class="feature-card-body">
+        <div class="step-flow">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-right">
+              <div class="step-title">配送先を新規登録する</div>
+              <div class="step-desc">
+                「アカウント設定」→「配送先管理」から「新しい配送先を追加」をクリックします。会社名・住所・担当者名・電話番号を入力して保存してください。
+              </div>
+              <div class="img-placeholder">
+                <div class="img-placeholder-icon">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zm-2 0H5V5h14v14zm-7-2a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+                </div>
+                <div class="img-placeholder-label">配送先登録フォームのスクリーンショット</div>
+                <div class="img-placeholder-sub">会社名・住所・担当者名・電話番号の入力フォームの実画面イメージ</div>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-right">
+              <div class="step-title">注文時に配送先を選択する</div>
+              <div class="step-desc">
+                カート確認画面の「配送先」プルダウンから登録済みの配送先を選択できます。注文ごとに異なる配送先を指定可能です。
+              </div>
+              <div class="img-placeholder">
+                <div class="img-placeholder-icon">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zm-2 0H5V5h14v14zm-7-2a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+                </div>
+                <div class="img-placeholder-label">カートの配送先選択プルダウンのスクリーンショット</div>
+                <div class="img-placeholder-sub">登録済み配送先が一覧表示されたプルダウンメニューの実画面イメージ</div>
+              </div>
+              <div class="note"> 配送先の追加・編集は管理者権限が必要な場合があります。管理者にご依頼ください。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- セクション②：納品・トラブル対応 -->
+    <div class="section-label">納品・トラブル対応</div>
+
+    <!-- Feature: 受取処理をする -->
+    <div class="feature-card" id="card-receive">
+      <div class="feature-card-header" onclick="toggleCard('card-receive')">
+        <div class="feature-card-title-area">
+          <div class="feature-card-title">受取処理をする</div>
+          <div class="feature-card-desc">商品が届いた際に受取確認を行い、発注を完了させる手順</div>
+        </div>
+        <div class="feature-card-toggle">›</div>
+      </div>
+      <div class="feature-card-body">
+        <div class="sub-article-list">
+          <div class="sub-article">
+            <span>受取確認・検品の手順</span>
+            <span class="sub-article-label">手順</span>
+            <span class="sub-article-arrow">›</span>
+          </div>
+          <div class="sub-article">
+            <span>数量・品番に相違がある場合の報告方法</span>
+            <span class="sub-article-label">トラブル</span>
+            <span class="sub-article-arrow">›</span>
+          </div>
+          <div class="sub-article">
+            <span>受取処理を取り消す方法</span>
+            <span class="sub-article-label">手順</span>
+            <span class="sub-article-arrow">›</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature: 配送トラブルを報告する -->
+    <div class="feature-card" id="card-trouble">
+      <div class="feature-card-header" onclick="toggleCard('card-trouble')">
+        <div class="feature-card-title-area">
+          <div class="feature-card-title">配送トラブルを報告する</div>
+          <div class="feature-card-desc">商品の破損・未着・誤納品などのトラブルが発生した際の対応方法</div>
+        </div>
+        <div class="feature-card-toggle">›</div>
+      </div>
+      <div class="feature-card-body">
+        <div class="sub-article-list">
+          <div class="sub-article">
+            <span>商品が届かない場合の確認手順</span>
+            <span class="sub-article-label">トラブル</span>
+            <span class="sub-article-arrow">›</span>
+          </div>
+          <div class="sub-article">
+            <span>破損・誤納品を報告する</span>
+            <span class="sub-article-label">トラブル</span>
+            <span class="sub-article-arrow">›</span>
+          </div>
+          <div class="sub-article">
+            <span>返品・交換を依頼する</span>
+            <span class="sub-article-label">手順</span>
+            <span class="sub-article-arrow">›</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 関連記事 -->
+    <div class="related-box">
+      <div class="related-box-title">関連するヘルプ記事</div>
+      <div class="related-item">
+        <span class="related-cat">注文</span>
+        注文をキャンセル・変更する方法
+        <span style="margin-left:auto;color:#c0c8d4;font-size:12px;">›</span>
+      </div>
+      <div class="related-item">
+        <span class="related-cat">注文</span>
+        複数配送先への分割注文の設定
+        <span style="margin-left:auto;color:#c0c8d4;font-size:12px;">›</span>
+      </div>
+      <div class="related-item">
+        <span class="related-cat">見積もり</span>
+        見積もり時に指定した納期と実際の納期が異なる場合
+        <span style="margin-left:auto;color:#c0c8d4;font-size:12px;">›</span>
+      </div>
+      <div class="related-item">
+        <span class="related-cat">請求</span>
+        未着・返品時の請求処理について
+        <span style="margin-left:auto;color:#c0c8d4;font-size:12px;">›</span>
+      </div>
+    </div>
+
+    <!-- Contact Banner -->
+    <div class="contact-banner">
+      <div>
+        <h2>解決しない場合はお問い合わせください</h2>
+        <p>サポートチームが平日 9:00〜18:00 に対応します。</p>
+      </div>
+      <div class="contact-btns">
+        <button class="btn btn-outline"> メールで問い合わせ</button>
+        <button class="btn btn-primary"> チャットで問い合わせ</button>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div>
+    <a href="#">利用規約</a>
+    <a href="#">プライバシーポリシー</a>
+    <a href="#">会社概要</a>
+    <a href="#">お問い合わせ</a>
+  </div>
+  <p style="margin-top:12px;">© 2026 わくわくEC. All rights reserved.</p>
+</footer>
+
+<script>
+  function toggleCard(id) {
+    const card = document.getElementById(id);
+    card.classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
