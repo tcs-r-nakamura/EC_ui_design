@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>請求・支払い | わくわくEC ヘルプセンター</title>
+  <link rel="stylesheet" href="common.css">
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header>
+  <div class="logo" onclick="location.href='help_page_sample.html'">
+    わくわくEC ヘルプセンター
+  </div>
+  <nav class="header-nav">
+    <a href="help_page_sample.html">トップ</a>
+    <a href="#">お知らせ</a>
+    <a href="#">お問い合わせ</a>
+  </nav>
+</header>
+
+<!-- ===== Breadcrumb ===== -->
+<nav class="breadcrumb" aria-label="パンくずリスト">
+  <a href="help_page_sample.html">ヘルプトップ</a>
+  <span class="sep">›</span>
+  <span class="current">請求・支払い</span>
+</nav>
+
+<!-- ===== Category Hero ===== -->
+<section class="category-hero">
+  <div class="category-hero-inner">
+    <div>
+      <h1>請求・支払い</h1>
+      <p>請求書のダウンロード・支払い方法の設定・購買履歴のCSV出力など、経理業務に関する機能を説明します</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Page Body ===== -->
+<div class="page-body">
+
+  <!-- ===== Sidebar ===== -->
+  <aside class="sidebar">
+    <div class="sidebar-box">
+      <div class="sidebar-title">このカテゴリの記事</div>
+      <ul class="sidebar-list">
+        <li class="sidebar-item active" tabindex="0" role="button"><span class="dot">●</span> 請求書をダウンロードする</li>
+        <li class="sidebar-item" tabindex="0" role="button"><span class="dot">○</span> 支払い方法を登録・変更する</li>
+        <li class="sidebar-item" tabindex="0" role="button"><span class="dot">○</span> 購買履歴をCSVで出力する</li>
+        <li class="sidebar-item" tabindex="0" role="button"><span class="dot">○</span> 支払い期日のアラートを設定する</li>
+        <li class="sidebar-item" tabindex="0" role="button"><span class="dot">○</span> 部門別のコスト集計を見る</li>
+        <li class="sidebar-item" tabindex="0" role="button"><span class="dot">○</span> 発注書・納品書を確認する</li>
+      </ul>
+    </div>
+    <div class="sidebar-box">
+      <div class="sidebar-title">購買担当者向け</div>
+      <ul class="sidebar-list">
+        <li class="sidebar-item" tabindex="0" role="button" onclick="location.href='order_detail.html'">🛒 注文・発注</li>
+        <li class="sidebar-item" tabindex="0" role="button" onclick="location.href='estimate_detail.html'">📋 見積もり</li>
+        <li class="sidebar-item" tabindex="0" role="button" onclick="location.href='delivery_detail.html'">🚚 配送・納期</li>
+      </ul>
+    </div>
+    <div class="sidebar-box">
+      <div class="sidebar-title">経理担当者向け</div>
+      <ul class="sidebar-list">
+        <li class="sidebar-item active" tabindex="0" role="button">💳 請求・支払い</li>
+      </ul>
+    </div>
+    <div class="sidebar-box">
+      <div class="sidebar-title">管理者向け</div>
+      <ul class="sidebar-list">
+        <li class="sidebar-item" tabindex="0" role="button" onclick="location.href='admin_detail.html'">👥 アカウント管理</li>
+        <li class="sidebar-item" tabindex="0" role="button" onclick="location.href='admin_detail.html'">🔗 システム連携</li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- ===== Main Content ===== -->
+  <main>
+
+    <h2 class="section-label">基本の操作</h2>
+
+    <!-- Feature: 請求書ダウンロード -->
+    <div class="feature-card open" id="card-invoice">
+      <div class="feature-card-header" onclick="toggleCard('card-invoice')" role="button" tabindex="0" aria-expanded="true" aria-controls="body-invoice">
+        <div class="feature-card-title-area">
+          <h3 class="feature-card-title">請求書をダウンロードする</h3>
+          <div class="feature-card-desc">月次・案件別の請求書PDFを一括または個別に取得する方法</div>
+        </div>
+        <div class="feature-card-toggle">›</div>
+      </div>
+      <div class="feature-card-body" id="body-invoice">
+        <div class="step-flow">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-right">
+              <div class="step-title">請求書一覧画面を開く</div>
+              <div class="step-desc">
+                メニューの「経理」→「請求書」をクリックします。
+                月別・サプライヤー別・部門別で絞り込んで表示することができます。
+              </div>
+              <div class="img-placeholder">
+                <div class="img-placeholder-icon">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zm-2 0H5V5h14v14zm-7-2a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+                </div>
+                <div class="img-placeholder-label">請求書一覧画面のスクリーンショット</div>
+                <div class="img-placeholder-sub">月・サプライヤー・部門で絞り込める請求書一覧の実画面イメージ</div>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-right">
+              <div class="step-title">ダウンロードしたい請求書を選ぶ</div>
+              <div class="step-desc">
+                個別にダウンロードする場合は各行の「PDF」ボタンをクリックします。
+                まとめてダウンロードする場合はチェックボックスで選択後、「一括ダウンロード」をクリックします。
+              </div>
+              <div class="img-placeholder">
+                <div class="img-placeholder-icon">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zm-2 0H5V5h14v14zm-7-2a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+                </div>
+                <div class="img-placeholder-label">請求書選択・ダウンロードボタンのスクリーンショット</div>
+                <div class="img-placeholder-sub">各行のPDFボタンと一括ダウンロードボタンの実画面イメージ</div>
+              </div>
+              <div class="tip">一括ダウンロードはZIPファイルで保存されます。ファイル名は「請求書番号_日付」の形式です。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Contact Banner -->
+    <div class="contact-banner">
+      <div>
+        <h2>解決しない場合はお問い合わせください</h2>
+        <p>サポートチームが平日 9:00〜18:00 に対応します。</p>
+      </div>
+      <div class="contact-btns">
+        <button type="button" class="btn btn-outline">メールで問い合わせ</button>
+        <button type="button" class="btn btn-primary">チャットで問い合わせ</button>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div>
+    <a href="#">利用規約</a>
+    <a href="#">プライバシーポリシー</a>
+    <a href="#">会社概要</a>
+    <a href="#">お問い合わせ</a>
+  </div>
+  <p style="margin-top:12px;">© 2026 わくわくEC. All rights reserved.</p>
+</footer>
+
+<script src="common.js"></script>
+</body>
+</html>

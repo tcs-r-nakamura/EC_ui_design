@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>アカウント管理 | わくわくEC ヘルプセンター</title>
+  <link rel="stylesheet" href="common.css">
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header>
+  <div class="logo" onclick="location.href='help_page_sample.html'">
+    わくわくEC ヘルプセンター
+  </div>
+  <nav class="header-nav">
+    <a href="help_page_sample.html">トップ</a>
+    <a href="#">お知らせ</a>
+    <a href="#">お問い合わせ</a>
+  </nav>
+</header>
+
+<!-- ===== Breadcrumb ===== -->
+<nav class="breadcrumb" aria-label="パンくずリスト">
+  <a href="help_page_sample.html">ヘルプトップ</a>
+  <span class="sep">›</span>
+  <span class="current">アカウント管理</span>
+</nav>
+
+<!-- ===== Category Hero ===== -->
+<section class="category-hero">
+  <div class="category-hero-inner">
+    <div>
+      <h1>アカウント管理</h1>
+      <p>ユーザーの招待・権限設定・部門管理・承認ルールの構成など、管理者向けの機能を説明します</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Page Body ===== -->
+<div class="page-body">
+
+  <!-- ===== Sidebar ===== -->
+  <aside class="sidebar">
+    <div class="sidebar-box">
+      <div class="sidebar-title">このカテゴリの記事</div>
+      <ul class="sidebar-list">
+        <li class="sidebar-item active" tabindex="0" role="button"><span class="dot">●</span> ユーザーを招待する</li>
+        <li class="sidebar-item" tabindex="0" role="button"><span class="dot">○</span> 権限・ロールを設定する</li>
+        <li class="sidebar-item" tabindex="0" role="button"><span class="dot">○</span> 部門・コストセンターを管理する</li>
+        <li class="sidebar-item" tabindex="0" role="button"><span class="dot">○</span> 承認ルールを設定する</li>
+        <li class="sidebar-item" tabindex="0" role="button"><span class="dot">○</span> ユーザーを無効化・削除する</li>
+        <li class="sidebar-item" tabindex="0" role="button"><span class="dot">○</span> 外部システムと連携する</li>
+      </ul>
+    </div>
+    <div class="sidebar-box">
+      <div class="sidebar-title">購買担当者向け</div>
+      <ul class="sidebar-list">
+        <li class="sidebar-item" tabindex="0" role="button" onclick="location.href='order_detail.html'">🛒 注文・発注</li>
+        <li class="sidebar-item" tabindex="0" role="button" onclick="location.href='estimate_detail.html'">📋 見積もり</li>
+        <li class="sidebar-item" tabindex="0" role="button" onclick="location.href='delivery_detail.html'">🚚 配送・納期</li>
+      </ul>
+    </div>
+    <div class="sidebar-box">
+      <div class="sidebar-title">経理担当者向け</div>
+      <ul class="sidebar-list">
+        <li class="sidebar-item" tabindex="0" role="button" onclick="location.href='billing_detail.html'">💳 請求・支払い</li>
+      </ul>
+    </div>
+    <div class="sidebar-box">
+      <div class="sidebar-title">管理者向け</div>
+      <ul class="sidebar-list">
+        <li class="sidebar-item active" tabindex="0" role="button">👥 アカウント管理</li>
+        <li class="sidebar-item" tabindex="0" role="button">🔗 システム連携</li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- ===== Main Content ===== -->
+  <main>
+
+    <h2 class="section-label">基本の操作</h2>
+
+    <!-- Feature: ユーザー招待 -->
+    <div class="feature-card open" id="card-invite">
+      <div class="feature-card-header" onclick="toggleCard('card-invite')" role="button" tabindex="0" aria-expanded="true" aria-controls="body-invite">
+        <div class="feature-card-title-area">
+          <h3 class="feature-card-title">ユーザーを招待する</h3>
+          <div class="feature-card-desc">メールアドレスで招待し、権限ロールを割り当てるまでの手順</div>
+        </div>
+        <div class="feature-card-toggle">›</div>
+      </div>
+      <div class="feature-card-body" id="body-invite">
+        <div class="step-flow">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-right">
+              <div class="step-title">ユーザー管理画面を開く</div>
+              <div class="step-desc">
+                「設定」→「ユーザー管理」をクリックします。
+                現在登録されているユーザーの一覧と招待中のユーザーが表示されます。
+              </div>
+              <div class="img-placeholder">
+                <div class="img-placeholder-icon">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zm-2 0H5V5h14v14zm-7-2a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+                </div>
+                <div class="img-placeholder-label">ユーザー管理画面のスクリーンショット</div>
+                <div class="img-placeholder-sub">登録済みユーザー一覧と招待ボタンの実画面イメージ</div>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-right">
+              <div class="step-title">招待するメールアドレスと権限を入力する</div>
+              <div class="step-desc">
+                「ユーザーを招待」ボタンをクリックし、メールアドレスと権限ロール（購買担当者・経理担当者・管理者）を選択します。
+                複数名を一度に招待する場合はカンマ区切りでメールアドレスを入力します。
+              </div>
+              <div class="img-placeholder">
+                <div class="img-placeholder-icon">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zm-2 0H5V5h14v14zm-7-2a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+                </div>
+                <div class="img-placeholder-label">ユーザー招待フォームのスクリーンショット</div>
+                <div class="img-placeholder-sub">メールアドレス入力欄と権限ロール選択の実画面イメージ</div>
+              </div>
+              <div class="tip">招待メールの有効期限は72時間です。期限切れの場合は再送信してください。</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-right">
+              <div class="step-title">招待の完了を確認する</div>
+              <div class="step-desc">
+                招待者がメール内のリンクからアカウントを設定すると、ステータスが「招待中」から「有効」に変わります。
+                ユーザー管理画面で招待状況をいつでも確認できます。
+              </div>
+              <div class="img-placeholder">
+                <div class="img-placeholder-icon">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zm-2 0H5V5h14v14zm-7-2a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+                </div>
+                <div class="img-placeholder-label">招待状況確認画面のスクリーンショット</div>
+                <div class="img-placeholder-sub">ユーザーのステータス（招待中・有効・無効）が確認できる実画面イメージ</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Banner -->
+    <div class="contact-banner">
+      <div>
+        <h2>解決しない場合はお問い合わせください</h2>
+        <p>サポートチームが平日 9:00〜18:00 に対応します。</p>
+      </div>
+      <div class="contact-btns">
+        <button type="button" class="btn btn-outline">メールで問い合わせ</button>
+        <button type="button" class="btn btn-primary">チャットで問い合わせ</button>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div>
+    <a href="#">利用規約</a>
+    <a href="#">プライバシーポリシー</a>
+    <a href="#">会社概要</a>
+    <a href="#">お問い合わせ</a>
+  </div>
+  <p style="margin-top:12px;">© 2026 わくわくEC. All rights reserved.</p>
+</footer>
+
+<script src="common.js"></script>
+</body>
+</html>

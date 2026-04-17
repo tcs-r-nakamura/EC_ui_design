@@ -61,21 +61,21 @@
     <div class="sidebar-box">
       <div class="sidebar-title">購買担当者向け</div>
       <ul class="sidebar-list">
-        <li class="sidebar-item" onclick="location.href='estimate_detail.html'">📋 見積もり</li>
-        <li class="sidebar-item" onclick="location.href='delivery_detail.html'">🚚 配送・納期</li>
+        <li class="sidebar-item active" tabindex="0" role="button" onclick="location.href='estimate_detail.html'">📋 見積もり</li>
+        <li class="sidebar-item" tabindex="0" role="button" onclick="location.href='delivery_detail.html'">🚚 配送・納期</li>
       </ul>
     </div>
     <div class="sidebar-box">
       <div class="sidebar-title">経理担当者向け</div>
       <ul class="sidebar-list">
-        <li class="sidebar-item" tabindex="0" role="button">💳 請求・支払い</li>
+        <li class="sidebar-item" tabindex="0" role="button" onclick="location.href='billing_detail.html'">💳 請求・支払い</li>
       </ul>
     </div>
     <div class="sidebar-box">
       <div class="sidebar-title">管理者向け</div>
       <ul class="sidebar-list">
-        <li class="sidebar-item" tabindex="0" role="button">👥 アカウント管理</li>
-        <li class="sidebar-item" tabindex="0" role="button">🔗 システム連携</li>
+        <li class="sidebar-item" tabindex="0" role="button" onclick="location.href='admin_detail.html'">👥 アカウント管理</li>
+        <li class="sidebar-item" tabindex="0" role="button" onclick="location.href='admin_detail.html'">🔗 システム連携</li>
       </ul>
     </div>
   </aside>
@@ -255,22 +255,22 @@
       <a href="#" class="related-item">
         <span class="related-cat">注文</span>
         見積もりから発注に切り替える際の承認フロー
-        <span style="margin-left:auto;color:#c0c8d4;font-size:12px;">›</span>
+        <span class="related-arrow">›</span>
       </a>
       <a href="#" class="related-item">
         <span class="related-cat">配送</span>
         見積もり時に指定した納期と実際の納期が異なる場合
-        <span style="margin-left:auto;color:#c0c8d4;font-size:12px;">›</span>
+        <span class="related-arrow">›</span>
       </a>
       <a href="#" class="related-item">
         <span class="related-cat">請求</span>
         見積書と請求書の金額が異なる場合の対処法
-        <span style="margin-left:auto;color:#c0c8d4;font-size:12px;">›</span>
+        <span class="related-arrow">›</span>
       </a>
       <a href="#" class="related-item">
         <span class="related-cat">アカウント</span>
         見積もり依頼の承認権限を設定する
-        <span style="margin-left:auto;color:#c0c8d4;font-size:12px;">›</span>
+        <span class="related-arrow">›</span>
       </a>
     </div>
 
@@ -281,8 +281,8 @@
         <p>サポートチームが平日 9:00〜18:00 に対応します。</p>
       </div>
       <div class="contact-btns">
-        <button type="button" class="btn btn-outline"> メールで問い合わせ</button>
-        <button type="button" class="btn btn-primary"> チャットで問い合わせ</button>
+        <button type="button" class="btn btn-outline">メールで問い合わせ</button>
+        <button type="button" class="btn btn-primary">チャットで問い合わせ</button>
       </div>
     </div>
 
@@ -300,14 +300,7 @@
   <p style="margin-top:12px;">© 2026 わくわくEC. All rights reserved.</p>
 </footer>
 
-<script>
-  function toggleCard(id) {
-    const card = document.getElementById(id);
-    const header = card.querySelector('.feature-card-header');
-    card.classList.toggle('open');
-    header.setAttribute('aria-expanded', card.classList.contains('open') ? 'true' : 'false');
-  }
-</script>
+<script src="common.js"></script>
 
 </body>
 </html>
