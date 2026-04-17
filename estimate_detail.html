@@ -88,12 +88,11 @@
 
     <!-- Feature: 見積もりを依頼する -->
     <div class="feature-card open" id="card-request">
-      <div class="feature-card-header" onclick="toggleCard('card-request')" role="button" tabindex="0" aria-expanded="true" aria-controls="body-request">
+      <div class="feature-card-header">
         <div class="feature-card-title-area">
           <h3 class="feature-card-title">見積もりを依頼する</h3>
           <div class="feature-card-desc">希望商品・数量・納期を指定してサプライヤーに見積もり依頼を送る手順</div>
         </div>
-        <div class="feature-card-toggle">›</div>
       </div>
       <div class="feature-card-body" id="body-request">
         <div class="step-flow">
@@ -150,129 +149,6 @@
       </div>
     </div>
 
-    <!-- Feature: 見積もりから発注に切り替える -->
-    <div class="feature-card" id="card-to-order">
-      <div class="feature-card-header" onclick="toggleCard('card-to-order')" role="button" tabindex="0" aria-expanded="false" aria-controls="body-to-order">
-        <div class="feature-card-title-area">
-          <h3 class="feature-card-title">見積もりから発注に切り替える</h3>
-          <div class="feature-card-desc">承認済みの見積書をもとにそのまま発注を確定する手順</div>
-        </div>
-        <div class="feature-card-toggle">›</div>
-      </div>
-      <div class="feature-card-body" id="body-to-order">
-        <div class="step-flow">
-          <div class="step">
-            <div class="step-num">1</div>
-            <div class="step-right">
-              <div class="step-title">見積書から発注申請する</div>
-              <div class="step-desc">
-                見積書詳細ページの「この見積もりで発注する」ボタンをクリックします。カートに自動で商品が追加され、承認申請画面へ進みます。
-              </div>
-              <div class="img-placeholder">
-                <div class="img-placeholder-icon">
-                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zm-2 0H5V5h14v14zm-7-2a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
-                </div>
-                <div class="img-placeholder-label">発注切り替えボタンのスクリーンショット</div>
-                <div class="img-placeholder-sub">見積書詳細ページの「この見積もりで発注する」ボタンの実画面イメージ</div>
-              </div>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num">2</div>
-            <div class="step-right">
-              <div class="step-title">配送先・備考を確認して申請する</div>
-              <div class="step-desc">
-                配送先・希望納期・社内管理番号を確認し「承認申請」をクリックします。以降は通常の承認フローと同じです。
-              </div>
-              <div class="note"> 見積もりの有効期限が切れている場合は発注に切り替えられません。再度見積もりを依頼してください。</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- セクション②：便利な見積もり機能 -->
-    <h2 class="section-label">便利な見積もり機能</h2>
-
-    <!-- Feature: 複数サプライヤーへ一括見積もりする -->
-    <div class="feature-card" id="card-bulk">
-      <div class="feature-card-header" onclick="toggleCard('card-bulk')" role="button" tabindex="0" aria-expanded="false" aria-controls="body-bulk">
-        <div class="feature-card-title-area">
-          <h3 class="feature-card-title">複数サプライヤーへ一括見積もりする</h3>
-          <div class="feature-card-desc">同じ商品を複数のサプライヤーへ同時に依頼して価格・納期を比較する機能</div>
-        </div>
-        <div class="feature-card-toggle">›</div>
-      </div>
-      <div class="feature-card-body" id="body-bulk">
-        <div class="sub-article-list">
-          <div class="sub-article" tabindex="0" role="button">
-            <span>一括見積もり依頼の手順</span>
-            <span class="sub-article-label">手順</span>
-            <span class="sub-article-arrow">›</span>
-          </div>
-          <div class="sub-article" tabindex="0" role="button">
-            <span>回答を比較して最適なサプライヤーを選ぶ</span>
-            <span class="sub-article-label">手順</span>
-            <span class="sub-article-arrow">›</span>
-          </div>
-          <div class="sub-article" tabindex="0" role="button">
-            <span>一括見積もりの履歴を確認する</span>
-            <span class="sub-article-label">設定</span>
-            <span class="sub-article-arrow">›</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Feature: 見積書をPDFで保存・共有する -->
-    <div class="feature-card" id="card-pdf">
-      <div class="feature-card-header" onclick="toggleCard('card-pdf')" role="button" tabindex="0" aria-expanded="false" aria-controls="body-pdf">
-        <div class="feature-card-title-area">
-          <h3 class="feature-card-title">見積書をPDFで保存・共有する</h3>
-          <div class="feature-card-desc">見積書を社内共有・稟議添付のためにPDFで出力する方法</div>
-        </div>
-        <div class="feature-card-toggle">›</div>
-      </div>
-      <div class="feature-card-body" id="body-pdf">
-        <div class="sub-article-list">
-          <div class="sub-article" tabindex="0" role="button">
-            <span>見積書をPDFでダウンロードする</span>
-            <span class="sub-article-label">手順</span>
-            <span class="sub-article-arrow">›</span>
-          </div>
-          <div class="sub-article" tabindex="0" role="button">
-            <span>見積書を社内メンバーへ共有する</span>
-            <span class="sub-article-label">手順</span>
-            <span class="sub-article-arrow">›</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 関連記事 -->
-    <div class="related-box">
-      <div class="related-box-title">関連するヘルプ記事</div>
-      <a href="#" class="related-item">
-        <span class="related-cat">注文</span>
-        見積もりから発注に切り替える際の承認フロー
-        <span class="related-arrow">›</span>
-      </a>
-      <a href="#" class="related-item">
-        <span class="related-cat">配送</span>
-        見積もり時に指定した納期と実際の納期が異なる場合
-        <span class="related-arrow">›</span>
-      </a>
-      <a href="#" class="related-item">
-        <span class="related-cat">請求</span>
-        見積書と請求書の金額が異なる場合の対処法
-        <span class="related-arrow">›</span>
-      </a>
-      <a href="#" class="related-item">
-        <span class="related-cat">アカウント</span>
-        見積もり依頼の承認権限を設定する
-        <span class="related-arrow">›</span>
-      </a>
-    </div>
 
     <!-- Contact Banner -->
     <div class="contact-banner">
